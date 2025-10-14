@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diko Remote - Einfach. Klar. Erledigt.</title>
+    <meta name="description" content="Virtuelle Assistenz mit Hands-on-Mentalität. Ich verschaffe dir Freiraum, Struktur und den Kopf für das, was wirklich zählt.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Inline CSS Styles -->
+    <style>
+/* ===== DIKO REMOTE WEBSITE STYLES ===== */
+
+/* CSS Variables - Brand Colors & Typography */
+:root {
+    /* Brand Colors */
+    --color-primary: #2B2B2B;           /* Anthrazit - Text, Headlines */
+    --color-accent: #4DB7A6;            /* Türkis - Buttons, Links, Icons */
+    --color-bg-sand: #E8DFD1;           /* Sandbeige - Hero/Sections */
+    --color-bg-white: #FFFFFF;          /* Weiß - Contentflächen */
+    --color-neutral-light: #F5F5F5;     /* Hellgrau */
+    --color-neutral-medium: #8B8B8B;    /* Mittelgrau */
+    
+    /* Typography */
+    --font-family: 'Nunito', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-extra-bold: 800;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+    
+    /* Border Radius */
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(43, 43, 43, 0.1);
+    --shadow-md: 0 4px 12px rgba(43, 43, 43, 0.15);
+    --shadow-lg: 0 8px 24px rgba(43, 43, 43, 0.2);
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-primary);
+    line-height: 1.6;
+    background-color: var(--color-bg-white);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-extra-bold);
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-weight-extra-bold);
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: var(--font-weight-bold);
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+strong {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+/* ===== LAYOUT ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+}
+
+.section:not(:last-of-type)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
+}
+
+.section:nth-child(even) {
+    background-color: var(--color-bg-sand);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-primary);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-neutral-medium);
+    margin-bottom: var(--spacing-xl);
+    font-weight: var(--font-weight-medium);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-bold);
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-bg-white);
+}
+
+.btn-primary:hover {
+    background-color: #3a9a89;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+.header {
+    background-color: var(--color-bg-white);
+    box-shadow: var(--shadow-sm);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav {
+    padding: var(--spacing-sm) 0;
+}
+
+.nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: var(--font-weight-extra-bold);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    background-color: var(--color-bg-sand);
+    padding: calc(80px + var(--spacing-xxl)) 0 var(--spacing-xxl) 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+}
+
+.hero-title {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-claim {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-neutral-medium);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ===== ABOUT SECTION ===== */
+.about {
+    background-color: var(--color-bg-white);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-intro {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.about-intro strong {
+    color: var(--color-accent);
+}
+
+.highlight-box {
+    background-color: var(--color-bg-sand);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    border-left: 5px solid var(--color-accent);
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.highlight-box.white-bg {
+    background-color: var(--color-bg-white);
+    border-left: 5px solid var(--color-accent);
+}
+
+.highlight-box strong {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+}
+
+/* ===== BACKGROUND SECTION ===== */
+.background {
+    background-color: var(--color-bg-sand);
+}
+
+.background-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.background-intro {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-neutral-medium);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.experience-item {
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.experience-icon {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.skills-section {
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.skill-tag {
+    background-color: var(--color-accent);
+    color: var(--color-bg-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+}
+
+.summary-box {
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    border-left: 5px solid var(--color-accent);
+    box-shadow: var(--shadow-sm);
+}
+
+.summary-box h4 {
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ===== ACCORDION STYLES ===== */
+.accordion-item {
+    background-color: var(--color-bg-white);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--color-accent);
+}
+
+.accordion-header {
+    padding: var(--spacing-lg);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: rgba(77, 183, 166, 0.05);
+}
+
+.accordion-title {
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.accordion-icon {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    display: none;
+}
+
+.accordion-content.active {
+    display: block;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.background-highlight {
+    background-color: var(--color-bg-sand);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin: var(--spacing-sm) 0;
+    font-weight: var(--font-weight-medium);
+}
+
+.career-list {
+    list-style: none;
+    padding: 0;
+}
+
+.career-list li {
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    position: relative;
+    line-height: 1.5;
+}
+
+.career-list li::before {
+    content: "▶";
+    color: var(--color-accent);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services {
+    background-color: var(--color-bg-white);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.service-card {
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.service-card h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    position: relative;
+    line-height: 1.6;
+}
+
+.service-list li::before {
+    content: "✓";
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+    position: absolute;
+    left: 0;
+}
+
+.services-summary {
+    background-color: var(--color-bg-sand);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    border-left: 5px solid var(--color-accent);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.services-summary.white-bg {
+    background-color: var(--color-bg-white);
+    border-left: 5px solid var(--color-accent);
+}
+
+.services-summary h4 {
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ===== STYLE SECTION ===== */
+.style {
+    background-color: var(--color-bg-sand);
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.advantage-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+}
+
+.advantage-item:hover {
+    transform: translateY(-3px);
+}
+
+.advantage-icon {
+    font-size: 1.5rem;
+    min-width: 2rem;
+    text-align: center;
+}
+
+.style-summary {
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    border-left: 5px solid var(--color-accent);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.style-statement {
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.style-statement strong {
+    color: var(--color-accent);
+    font-size: 1.4rem;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+    background-color: var(--color-bg-white);
+}
+
+.contact-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-neutral-medium);
+    margin-bottom: var(--spacing-xl);
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+}
+
+.contact-item:first-child {
+    justify-content: center;
+    background-color: var(--color-bg-white);
+    border: 2px solid var(--color-accent);
+}
+
+.contact-item-bordered {
+    border-left: 5px solid var(--color-accent);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    min-width: 2rem;
+}
+
+.contact-info h4 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
+}
+
+.contact-info a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.footer-logo {
+    height: 30px;
+    width: auto;
+}
+
+.footer-claim {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.footer-nav {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.footer-link {
+    color: var(--color-bg-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-accent);
+}
+
+/* ===== VIDEO MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 43, 43, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--color-bg-white);
+    margin: 5% auto;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+}
+
+.close {
+    color: var(--color-neutral-medium);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--color-accent);
+}
+
+.video-container {
+    margin-top: var(--spacing-md);
+}
+
+.video-placeholder {
+    text-align: center;
+    padding: var(--spacing-xxl);
+    background-color: var(--color-bg-sand);
+    border-radius: var(--border-radius);
+    color: var(--color-neutral-medium);
+    font-size: 1.2rem;
+}
+
+.video-placeholder i {
+    font-size: 3rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: var(--color-bg-white);
+        flex-direction: column;
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-lg);
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-image {
+        order: -1;
+    }
+    
+    .profile-image {
+        max-width: 300px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .hero {
+        padding: calc(80px + var(--spacing-xl)) 0 var(--spacing-xl) 0;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        padding: var(--spacing-md);
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-item:first-child {
+        flex-direction: row;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: var(--spacing-md);
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center {
+    text-align: center;
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
+}
+
+.mt-lg {
+    margin-top: var(--spacing-lg);
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-accent);
+    color: var(--color-bg-white) !important;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    z-index: 9999;
+    transition: top 0.3s ease;
+    font-weight: var(--font-weight-bold);
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Header scroll effect */
+.header.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== ANIMATION & TRANSITIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Smooth scrolling for anchor links */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Focus styles for accessibility */
+.btn:focus,
+.nav-link:focus,
+.footer-link:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="https://page.gensparksite.com/v1/base64_upload/3294dcab2b580024ece57a80feed60b5" alt="Diko Remote Logo" class="logo">
+                    <span class="brand-name">Diko Remote</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="#about" class="nav-link">Über mich</a>
+                    <a href="#background" class="nav-link">Mein Background</a>
+                    <a href="#services" class="nav-link">Leistungen</a>
+                    <a href="#contact" class="nav-link">Kontakt</a>
+                </div>
+                <button class="menu-toggle" aria-label="Menü öffnen">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Diko Remote</h1>
+                    <p class="hero-claim">Einfach. Klar. Erledigt.</p>
+                    <p class="hero-description">
+                        Hands-on-Mentalität und Ergebnisse – so, wie du sie brauchst.<br>
+                        Kein Overhead. Kein Drama. Keine tausend Nachfragen.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary video-btn">
+                            <i class="fas fa-play"></i>
+                            1.15 Minute Kennenlernvideo
+                        </button>
+                        <a href="#services" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i>
+                            Zu meinen Leistungen
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://page.gensparksite.com/v1/base64_upload/74b067f7f12d135aeb24399c8666fc59" alt="Diko - Virtuelle Assistentin" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Über mich</h2>
+            <div class="about-content">
+                <p class="about-intro">
+                    Ich bin Diko – unkompliziert, klar und lösungsorientiert.<br>
+                    Ich bin nicht die, die erst zehn Mails schreibt, um dann zu starten.<br>
+                    <strong>Ich bin die, die's einfach erledigt.</strong>
+                </p>
+                
+                <p>
+                    Ich bringe über 20 Jahre Erfahrung in Organisation, Support und Prozessmanagement mit – vom klassischen Office bis zu komplexen digitalen Systemen.<br>
+                    Heute nutze ich dieses Wissen, um Unternehmen als Virtuelle Assistenz zu unterstützen, Strukturen zu schaffen, Prozesse zu vereinfachen und Aufgaben effizient zu erledigen.
+                </p>
+                
+                <p>
+                    Ich kombiniere kaufmännisches Know-how mit technischem Verständnis und einem klaren Blick für pragmatische Lösungen.<br>
+                    Ob Kundensupport, Backoffice, Automatisierung oder Dokumentation – ich sorge dafür, dass Arbeit wieder fließt, Systeme greifen und der Alltag leichter wird.
+                </p>
+                
+                <p>
+                    Mein Ziel: Mehr Fokus auf das Wesentliche.<br>
+                    <strong>👉 Einfach. Klar. Erledigt.</strong>
+                </p>
+                
+                <div class="highlight-box white-bg">
+                    <p><strong>Wenn du willst, dass Dinge einfach erledigt werden:<br>
+                    Dann bist du hier richtig.</strong></p>
+                </div>
+                
+                <div style="text-align: center; margin-top: var(--spacing-lg);">
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i>
+                        Zu meinen Leistungen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Background Section -->
+    <section id="background" class="section background">
+        <div class="container">
+            <h2 class="section-title">Mein Background</h2>
+            <div class="background-content">
+                <p class="background-intro">
+                    Ich komme praxisorientiert aus dem echten Alltag.<br>
+                    Aus Posteingängen, die überquellen. Aus Prozessen, die keiner versteht.<br>
+                    Und aus Systemen, die dringend jemanden brauchen, der sie zum Laufen bringt.
+                </p>
+                
+                <div class="background-highlight">
+                    <h4>💡 Was ich bisher gelernt & aufgebaut habe</h4>
+                </div>
+                
+                <!-- Beruflich erworbenes Wissen -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-title">🎓 Beruflich erworbenes Wissen</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>Über mehr als 20 Jahre</strong> habe ich in verschiedenen Unternehmen Erfahrungen gesammelt – vom Einkauf über Office-Management bis hin zur Leitung internationaler Support-Teams und Prozessautomatisierung.</p>
+                        <p>Mein beruflicher Werdegang hat mich durch alle Ebenen moderner Unternehmensorganisation geführt: vom operativen Tagesgeschäft bis zur strategischen Prozessgestaltung. In großen Unternehmen und kleinen Start-Ups.</p>
+                        
+                        <div class="background-highlight">
+                            <strong>Fokus & Erfahrungsschwerpunkte:</strong>
+                        </div>
+                        
+                        <ul class="career-list">
+                            <li>Organisation & Office Management</li>
+                            <li>Technischer Kundensupport & Fehleranalyse</li>
+                            <li>Qualitätssicherung & Reputationsmanagement</li>
+                            <li>Prozess- und Wissensdokumentation</li>
+                            <li>Change Management & digitale Transformation</li>
+                            <li>Teamleitung & Mitarbeiterentwicklung</li>
+                            <li>Prozessaufbau, Automatisierung & Optimierung</li>
+                            <li>Einführung und Betreuung digitaler Tools (u. a. Zendesk, Notion, Power Automate, Google Workspace, etc.)</li>
+                            <li>Aufbau und Skalierung von Supportstrukturen (DACH & international)</li>
+                            <li>Entwicklung von Helpcentern, Wissensdatenbanken & Rücksendportalen</li>
+                            <li>Datenanalyse, KPI-Tracking und Reporting</li>
+                            <li>Schnittstellenmanagement zwischen Produkt, Logistik und Support</li>
+                        </ul>
+                        
+                        <div class="background-highlight">
+                            <strong>Bisherige Stationen (zusammengefasst):</strong>
+                        </div>
+                        
+                        <ul class="career-list">
+                            <li><strong>Teamlead Customer Support:</strong> Aufbau & Leitung des 1st-Level-Supports, Prozessautomatisierung, Schnittstelle Produkt & Customer Success, Backoffice</li>
+                            <li><strong>Head of Customer Support & Office Management:</strong> Leitung eines internationalen Teams, Aufbau skalierbarer Prozesse, Automatisierungen & KPI-Systeme, Backoffice</li>
+                            <li><strong>Customer Support Specialist:</strong> Software-Support, Prozessberatung & Dokumentation</li>
+                            <li><strong>Kaufmännische Tätigkeiten & Administration:</strong> Organisation, Backoffice, Rechnungswesen, Controlling, Kommunikation, Auftragsmanagement</li>
+                            <li><strong>Einkauf & Assistenz der Geschäftsleitung:</strong> International, Teamleitung, Produktentwicklung, Messeorganisation, Azubi-Betreuung, Backoffice, Administration, Organisation, persönliche Betreuung</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Autodidaktisch erweiterte Kenntnisse -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-title">🚀 Autodidaktisch erweiterte Kenntnisse & Leidenschaften</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Neben meiner beruflichen Laufbahn habe ich mir ein breites Wissen in digitalen Themen, Automatisierung, Kreativprojekten und Unternehmertum selbst angeeignet. Ich entwickle Brettspiele und mache meine eigene Musik.</p>
+                        <p>Ich lerne schnell, teste gern neue Tools und verbinde Struktur mit Kreativität. Ich brenne für Neues.</p>
+                        
+                        <div class="background-highlight">
+                            <strong>Meine autodidaktischen Schwerpunkte:</strong>
+                        </div>
+                        
+                        <ul class="career-list">
+                            <li><strong>KI-gestützte Prozessoptimierung:</strong> Automatisierungen, Scripting</li>
+                            <li><strong>Aufbau & Management eigener Marken & Online-Auftritte:</strong> Fotografie, Blog digitale Tools & KI-Plattform, Blog Reise, <a href="https://beachsidewhiskers.com/" target="_blank" class="link">Beachside Whiskers</a> (Tierschutzprojekt Fuerteventura), E-Commerce, Print-on-Demand</li>
+                            <li><strong>Webentwicklung & Contentpflege:</strong> WordPress, GitHub Pages & CMS-Systeme</li>
+                            <li><strong>Content-Strategien & Social Media Management:</strong> Instagram, TikTok, LinkedIn, Pinterest</li>
+                            <li><strong>Gestaltung & Textproduktion:</strong> Canva & KI-Tools</li>
+                            <li><strong>Entwicklung eigener Konzepte & Spiele</strong></li>
+                            <li><strong>Eigene Elektro Musikproduktion:</strong> <a href="https://open.spotify.com/intl-de/artist/2hNYUQMlLSIkR8KOKpX03D" target="_blank" class="link">Jaxoncage</a></li>
+                            <li><strong>E-Commerce:</strong> Print-on-Demand, eBay, Amazon, Affiliate-Systeme</li>
+                            <li><strong>SEO, Keyword-Strategie & Webtext-Erstellung</strong></li>
+                            <li><strong>Prozessautomatisierung & Wissensmanagement:</strong> Notion, Power Automate & Make, etc.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Ausbildung & Studium -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-title">🎓 Ausbildung & Studium</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <ul class="career-list">
+                            <li><strong>Master Professional of Business Management (CCI)</strong><br>
+                                Wirtschaftsakademie Schleswig-Holstein<br>
+                                <em>(entspricht DQR 7 / Master-Niveau, Schwerpunkt BWL & Unternehmensführung im Abendstudium)</em></li>
+                            <li><strong>Kauffrau im Groß- und Außenhandel</strong><br>
+                                VICTOR International GmbH<br>
+                                <em>(kaufmännische Grundausbildung mit Fokus auf Einkauf & Organisation)</em></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Persönliches Profil -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-title">💬 Persönliches Profil</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Ich liebe es, wenn Dinge funktionieren – besser, klarer, nachhaltiger.<br>
+                        Ich hinterfrage Prozesse, denke sie neu und automatisiere sie, wenn es Sinn ergibt.</p>
+                        
+                        <p>Mit meinem kaufmännischen Background, Führungserfahrung und meiner Leidenschaft für Technik, KI und Struktur verbinde ich Menschen, Tools und Organisation zu einem funktionierenden System, in dem Aufgaben erledigt werden und Freiräume geschaffen werden.</p>
+                        
+                        <div class="background-highlight">
+                            <strong>Was mich ausmacht:</strong>
+                        </div>
+                        
+                        <ul class="career-list">
+                            <li>💡 Tech-Affinität</li>
+                            <li>🤝 Hands-on-Mentalität</li>
+                            <li>🧠 Struktur & Klarheit</li>
+                            <li>❤️ Empathie & Kommunikationsstärke</li>
+                            <li>⚙️ Begeisterung für Automatisierung & Fortschritt</li>
+                        </ul>
+                        
+                        <p>Ich arbeite remote-first – in Deutschland und auf Fuerteventura – und bringe mit Diko Remote genau das zusammen: <strong>Erfahrung, Technik, Kreativität und das Gespür für das Wesentliche.</strong></p>
+                    </div>
+                </div>
+                
+                <div class="summary-box">
+                    <h4>💡 Kurz gesagt:</h4>
+                    <p>
+                        Ich bin die, die Struktur bringt, Prozesse skaliert, Chaos in Klarheit verwandelt –<br>
+                        und Aufgaben einfach so erledigt, wie sie erledigt werden sollen.<br>
+                        Mit Technik, Verstand und einer ordentlichen Portion Hands-on-Mentalität.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Was ich für dich übernehme</h2>
+            <p class="section-subtitle">
+                Ich bin kein zusätzlicher Punkt auf deiner To-do-Liste –<br>
+                ich bin der Grund, warum sie kürzer wird.
+            </p>
+            
+            <div class="services-grid">
+                <!-- Virtuelle Assistenz & Backoffice Management -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Virtuelle Assistenz & Backoffice Management</h3>
+                    <ul class="service-list">
+                        <li>E-Mail-Management, Kalender & Terminkoordination</li>
+                        <li>Recherche, Datenpflege & administrative Aufgaben</li>
+                        <li>Reisebuchungen & Event-Organisation</li>
+                        <li>Rechnungsstellung, Dokumentenverwaltung & Ablage</li>
+                        <li>Korrespondenz & Kommunikation mit Geschäftspartnern</li>
+                        <li>Allgemeine Büroorganisation & Sekretariatstätigkeiten</li>
+                    </ul>
+                </div>
+
+                <!-- Prozessoptimierung & Automatisierung -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Prozessoptimierung & Automatisierung</h3>
+                    <ul class="service-list">
+                        <li>Analyse & Optimierung bestehender Arbeitsabläufe</li>
+                        <li>Einrichtung von Automatisierungen & Workflows</li>
+                        <li>Integration verschiedener Tools & Systeme</li>
+                        <li>Entwicklung von Standard Operating Procedures (SOPs)</li>
+                        <li>Implementierung von Zeitmanagement-Lösungen</li>
+                        <li>Effizienzsteigerung durch smarte Tool-Nutzung</li>
+                    </ul>
+                </div>
+
+                <!-- Kundensupport & Dokumentation -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Kundensupport & Dokumentation</h3>
+                    <ul class="service-list">
+                        <li>E-Mail-, Chat- & Telefonsupport für Kunden</li>
+                        <li>Erstellung & Pflege von Helpcentern & FAQs</li>
+                        <li>Bearbeitung von Kundenanfragen & Beschwerden</li>
+                        <li>Ticket-Management & Support-Dokumentation</li>
+                        <li>Qualitätssicherung im Kundenkontakt</li>
+                        <li>Entwicklung von Support-Prozessen & -Standards</li>
+                    </ul>
+                </div>
+
+                <!-- Strukturaufbau & Wissensmanagement -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>Strukturaufbau & Wissensmanagement</h3>
+                    <ul class="service-list">
+                        <li>Aufbau & Organisation von Wissensdatenbanken</li>
+                        <li>Erstellung von Handbüchern & Leitfäden</li>
+                        <li>Strukturierung von Dateisystemen & Ordnerstrukturen</li>
+                        <li>Entwicklung von Templates & Vorlagen</li>
+                        <li>Onboarding-Unterlagen für neue Mitarbeitende</li>
+                        <li>Kontinuierliche Pflege & Aktualisierung der Dokumentation</li>
+                    </ul>
+                </div>
+
+                <!-- Organisation von Projekten & Abläufen -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Organisation von Projekten & Abläufen</h3>
+                    <ul class="service-list">
+                        <li>Projektplanung, -koordination & -überwachung</li>
+                        <li>Aufgabenverteilung & Deadline-Management</li>
+                        <li>Meetingorganisation & Protokollführung</li>
+                        <li>Ressourcenplanung & -verwaltung</li>
+                        <li>Status-Reporting & Projekt-Kommunikation</li>
+                        <li>Nachbereitung & Lessons Learned Dokumentation</li>
+                    </ul>
+                </div>
+
+                <!-- Alles rund um Social Media -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Alles rund um Social Media</h3>
+                    <ul class="service-list">
+                        <li>Content-Planung & Social Media Strategie</li>
+                        <li>Beiträge erstellen, bearbeiten & veröffentlichen</li>
+                        <li>Community Management & Interaktion mit Followern</li>
+                        <li>Social Media Monitoring & Analytics</li>
+                        <li>Influencer-Kooperationen & Kampagnen-Betreuung</li>
+                        <li>Plattform-Management (Instagram, LinkedIn, Facebook, etc.)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="services-summary white-bg">
+                <h4>💡 Kurz gesagt:</h4>
+                <p>
+                    Ich erledige, strukturiere und organisiere – damit du dich um das Wesentliche kümmern kannst.<br>
+                    Effizient, digital, selbstständig und genau so, wie du's brauchst.
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: var(--spacing-lg);">
+                <a href="#background" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    Mein Background
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style Section -->
+    <section class="section style">
+        <div class="container">
+
+            <div class="style-summary">
+                <p class="style-statement">
+                    Ich bin nicht einfach „Support".<br>
+                    <strong>Ich bin dein Ruhepol, dein Backup, deine Lösung.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Kontakt</h2>
+            <p class="contact-intro">
+                Bereit, dich um die wichtigen Dinge zu kümmern?<br>
+                Ich halte dir den Rücken frei.
+            </p>
+            
+            <div class="contact-content">
+                <div class="contact-methods">
+                    <div class="contact-item">
+                        <button class="btn btn-primary video-btn-contact">
+                            <i class="fas fa-play"></i>
+                            1.15 Minute Kennenlernvideo
+                        </button>
+                    </div>
+                    
+                    <div class="contact-item contact-item-bordered">
+                        <div class="contact-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Mein Kontakthub</h4>
+                            <a href="https://linktr.ee/dikoremote?utm_source=linktree_profile_share&ltsid=bb4610e4-43b6-47a4-9368-f6ef45b28966" target="_blank" class="link">Klicke hier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item contact-item-bordered">
+                        <div class="contact-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Direktnachricht</h4>
+                            <a href="https://wa.me/491627040546?text=Hallo%20Diana,%20ich%20interessiere%20mich%20f%C3%BCr%20Ihre%20virtuellen%20Assistenz-Services." class="link">WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item contact-item-bordered">
+                        <div class="contact-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Zu meinen Leistungen</h4>
+                            <a href="#services" class="link">Klicke hier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="https://page.gensparksite.com/v1/base64_upload/3294dcab2b580024ece57a80feed60b5" alt="Diko Remote Logo" class="footer-logo">
+                    <p class="footer-claim">Einfach. Klar. Erledigt.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <p>© 2025 Diko Remote</p>
+                    <div class="footer-nav">
+                        <a href="impressum.html" class="footer-link">Impressum</a>
+                        <a href="datenschutzerklaerung.html" class="footer-link">Datenschutz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="video-container">
+                <video controls playsinline webkit-playsinline preload="auto" style="width: 100%; max-width: 100%; height: auto; border-radius: 8px;" onloadstart="console.log('Video loading started')" oncanplay="console.log('Video can play')" onerror="console.log('Video error:', event)">
+                    <source src="videos/welcome-video.mp4" type="video/mp4">
+                    <source src="https://page.gensparksite.com/get_upload_url/c2ddd4166ef74463aa200bda7c209db6bcfbfb3c2939eca70e0fcb79623ea36a/default/983ed3ba-e913-4ec2-a8e0-38fa445db654" type="video/mp4">
+                    <p>Ihr Browser unterstützt das Video-Element nicht. 
+                       <a href="videos/welcome-video.mp4" download>Video herunterladen</a>
+                    </p>
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inline JavaScript -->
+    <script>
+/**
+ * DIKO REMOTE - Main JavaScript File
+ * Handles interactive elements and user interactions
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all interactive features
+    initMobileMenu();
+    initSmoothScrolling();
+    initVideoModal();
+    initScrollAnimations();
+    initContactInteractions();
+});
+
+/**
+ * Mobile Menu Toggle Functionality
+ */
+function initMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            
+            // Update aria-label for accessibility
+            const isOpen = navMenu.classList.contains('active');
+            menuToggle.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+            
+            // Change icon
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+            }
+        });
+        
+        // Close menu when clicking on nav links
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-label', 'Menü öffnen');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-bars';
+                }
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-label', 'Menü öffnen');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-bars';
+                }
+            }
+        });
+    }
+}
+
+/**
+ * Smooth Scrolling for Navigation Links
+ */
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // Calculate offset for fixed header
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+/**
+ * Video Modal Functionality
+ */
+function initVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const videoButtons = document.querySelectorAll('.video-btn, .video-btn-contact');
+    const closeBtn = document.querySelector('.close');
+    
+    if (modal && videoButtons.length > 0) {
+        // Open modal when video buttons are clicked
+        videoButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                
+                // Focus management for accessibility
+                closeBtn.focus();
+            });
+        });
+        
+        // Close modal when close button is clicked
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                closeModal();
+            });
+        }
+        
+        // Close modal when clicking outside the modal content
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+        
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+            
+            // Return focus to the button that opened the modal
+            const firstVideoButton = document.querySelector('.video-btn');
+            if (firstVideoButton) {
+                firstVideoButton.focus();
+            }
+        }
+    }
+}
+
+/**
+ * Scroll Animations - Add fade-in effect when elements come into view
+ */
+function initScrollAnimations() {
+    // Create intersection observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements for animation
+    const animateElements = document.querySelectorAll(
+        '.service-card, .experience-item, .advantage-item, .contact-item'
+    );
+    
+    animateElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+/**
+ * Contact Interactions and Form Handling
+ */
+function initContactInteractions() {
+    // Email link interaction
+    const emailLink = document.querySelector('a[href^="mailto:"]');
+    if (emailLink) {
+        emailLink.addEventListener('click', function() {
+            // Track email click (for analytics if needed)
+            console.log('Email link clicked: hello@dikoremote.de');
+        });
+    }
+    
+    // Add hover effects to contact items
+    const contactItems = document.querySelectorAll('.contact-item');
+    contactItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+/**
+ * Header Scroll Effect - Add shadow on scroll
+ */
+function initHeaderScrollEffect() {
+    const header = document.querySelector('.header');
+    
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+}
+
+/**
+ * Utility Functions
+ */
+
+// Debounce function for performance optimization
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function executedFunction() {
+        const context = this;
+        const args = arguments;
+        const later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+// Smooth scroll to top function
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+/**
+ * Performance Optimizations
+ */
+
+// Preload critical images
+function preloadImages() {
+    const criticalImages = [
+        'https://page.gensparksite.com/v1/base64_upload/74b067f7f12d135aeb24399c8666fc59',
+        'https://page.gensparksite.com/v1/base64_upload/3294dcab2b580024ece57a80feed60b5'
+    ];
+    
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// Initialize performance optimizations
+document.addEventListener('DOMContentLoaded', function() {
+    preloadImages();
+    initHeaderScrollEffect();
+});
+
+/**
+ * Error Handling and Fallbacks
+ */
+window.addEventListener('error', function(e) {
+    console.error('JavaScript error:', e.error);
+    // Could add user-friendly error handling here
+});
+
+/**
+ * Accessibility Enhancements
+ */
+
+// Skip to main content functionality
+function addSkipLink() {
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main';
+    skipLink.textContent = 'Zum Hauptinhalt springen';
+    skipLink.className = 'skip-link';
+    skipLink.style.cssText = `
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: var(--color-accent);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 9999;
+        transition: top 0.3s;
+    `;
+    
+    skipLink.addEventListener('focus', function() {
+        this.style.top = '6px';
+    });
+    
+    skipLink.addEventListener('blur', function() {
+        this.style.top = '-40px';
+    });
+    
+    document.body.insertBefore(skipLink, document.body.firstChild);
+}
+
+// Add skip link for accessibility
+document.addEventListener('DOMContentLoaded', addSkipLink);
+
+/**
+ * Accordion Functionality for Background Section
+ */
+function toggleAccordion(button) {
+    const accordionItem = button.parentElement;
+    const content = accordionItem.querySelector('.accordion-content');
+    const isActive = accordionItem.classList.contains('active');
+    
+    // Close all accordion items
+    document.querySelectorAll('.accordion-item').forEach(item => {
+        item.classList.remove('active');
+        const itemContent = item.querySelector('.accordion-content');
+        if (itemContent) {
+            itemContent.classList.remove('active');
+        }
+    });
+    
+    // Open clicked item if it wasn't active
+    if (!isActive) {
+        accordionItem.classList.add('active');
+        content.classList.add('active');
+    }
+}
+
+/**
+ * Console Welcome Message
+ */
+console.log(`
+🚀 Diko Remote Website geladen
+📧 Kontakt: hello@dikoremote.de
+💡 Einfach. Klar. Erledigt.
+`);
+
+/**
+ * Export functions for potential testing or external use
+ */
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        initMobileMenu,
+        initSmoothScrolling,
+        initVideoModal,
+        initScrollAnimations,
+        debounce,
+        scrollToTop
+    };
+}
+    </script>
+</body>
+</html>
